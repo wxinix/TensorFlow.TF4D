@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0CC8D535-7E13-4A02-8601-48298AFFC0AD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Core\TF4D.Core.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tests\TF4D.Tests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TF4D_Core">
+        <MSBuild Projects="Core\TF4D.Core.dproj"/>
+    </Target>
+    <Target Name="TF4D_Core:Clean">
+        <MSBuild Projects="Core\TF4D.Core.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TF4D_Core:Make">
+        <MSBuild Projects="Core\TF4D.Core.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TF4D_Tests">
+        <MSBuild Projects="Tests\TF4D.Tests.dproj"/>
+    </Target>
+    <Target Name="TF4D_Tests:Clean">
+        <MSBuild Projects="Tests\TF4D.Tests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TF4D_Tests:Make">
+        <MSBuild Projects="Tests\TF4D.Tests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TF4D_Core;TF4D_Tests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TF4D_Core:Clean;TF4D_Tests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TF4D_Core:Make;TF4D_Tests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,17 @@
+*.~*
+*.bak
+*.dcu
+*.dll
+*.dsk
+*.identcache
+*.local
+*.res
+*.skincfg
+*.stat
+*.tvsconfig
+*.vlb
+/Outputs
+__history
+Runtime/
+Win32/
+Win64/
